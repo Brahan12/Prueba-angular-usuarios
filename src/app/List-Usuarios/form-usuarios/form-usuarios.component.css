@@ -1,0 +1,29 @@
+.cardTop{
+    margin-top: 1em;
+}
+
+.imgStyle{
+    margin: 0.5em auto;
+    border: 1px solid #3e3e3e;
+    border-radius: 8px;
+}
+
+.informacion, .title{
+    text-align: center;
+}
+
+.title{
+    margin-top: 1em;
+}
+
+.informacion >span{
+    font-weight: bold;
+}
+
+.botonVolver{
+    margin-bottom: 1em;
+}
+
+.postStyle{
+    margin-top: 1em;
+}

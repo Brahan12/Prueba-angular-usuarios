@@ -1,0 +1,29 @@
+<div class="container-fluid containerTop">
+    <div>
+       <h2>Comentarios posts {{id.id}}</h2>
+    </div>
+    <div class="botonVolver">
+        <button type="button" class="btn btn-warning" (click)="volver()">Volver</button> 
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let item of dataTable | paginate:{itemsPerPage: 10, currentPage: paginador, id:'PgtblComentarioUsuarios'}">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.body}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="paginador = $event" previousLabel="" nextLabel="" id="PgtblComentarioUsuarios"></pagination-controls>
+    </div>
+</div>

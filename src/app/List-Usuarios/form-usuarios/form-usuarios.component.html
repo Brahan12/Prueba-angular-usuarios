@@ -1,0 +1,48 @@
+<div class="container-lg cardTop">
+    <div class="botonVolver">
+        <button type="button" class="btn btn-warning" [routerLink]="['']">Volver</button> 
+    </div>
+    <div class="card">
+        <h3 class="card-title title">{{informacion.name + ' ' + informacion.username}}</h3>
+        <img src="/assets/img/user.png" class="imgStyle" alt="..." width="300px">
+        <div class="card-body">
+          <div class="informacion">
+            <span>Correo:</span><p>{{informacion.email}}</p>
+            <span>Dirección:</span><p>{{informacion.address.street+ ' '+informacion.address.suite + ' '+informacion.address.city
+                + ' '+informacion.address.zipcode}}</p>
+            <span>Localización:</span><p>{{informacion.address.geo.lat+ ' '+informacion.address.geo.lng }}</p>
+            <span>Teléfono:</span><p>{{informacion.phone}}</p>
+            <span>Sitio WEB:</span><p>{{informacion.website}}</p>
+            <span>Nombre de la compañia:</span><p>{{informacion.company.name+ ' '+informacion.company.catchPhrase 
+                + ' '+informacion.company.bs}}</p>
+          </div>
+          <div class="postStyle">
+            <h5 class="card-title">POSTS USUARIO</h5>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Posts</th>
+                            <th>Comentarios</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr *ngFor="let item of dataTable | paginate:{itemsPerPage: 2, currentPage: paginador, id:'PgtblFormUsuarios'}">
+                            <td>{{item.id}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.body}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" [routerLink]="['comentario',item.id]">Comentarios</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="paginador = $event" previousLabel="" nextLabel="" id="PgtblFormUsuarios"></pagination-controls>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+

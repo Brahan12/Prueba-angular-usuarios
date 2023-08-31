@@ -1,0 +1,29 @@
+<div class="container-lg ">
+    <div class="headerAlbum">
+        <h2>Álbumes</h2>
+        <button type="button" class="btn btn-warning" [routerLink]="['']">Volver</button>
+    </div>
+    <div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Descripción Imagen</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let item of dataCard | paginate:{itemsPerPage: 8, currentPage: paginador, id:'PgtblFotos'}">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" [routerLink]="['descripcion',item.id]">Imagen</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="paginador = $event" previousLabel="" nextLabel="" id="PgtblFotos"></pagination-controls>
+        </div>
+    </div>
+</div>

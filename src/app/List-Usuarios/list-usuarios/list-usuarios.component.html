@@ -1,0 +1,35 @@
+<div class="container-fluid containerTop">
+    <div class="header">
+        <div>
+            <input type="text" (ngModel)="filter" placeholder="Busqueda" (keyup)="p = 1">
+        </div>
+        <div>
+            <button type="button" class="btn btn-success" [routerLink]="['Fotos']">Album</button>
+        </div>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del usuario</th>
+                    <th>User name</th>
+                    <th>Correo</th>
+                    <th>info</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let item of dataTable | pipeUsuario:filter | paginate:{itemsPerPage: 10, currentPage: paginador, id:'PgtblUsuarios'}">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" [routerLink]="['info',item.id]">Información</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="paginador = $event" previousLabel="" nextLabel="" id="PgtblUsuarios"></pagination-controls>
+    </div>
+</div>
